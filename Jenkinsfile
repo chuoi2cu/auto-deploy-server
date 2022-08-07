@@ -5,7 +5,12 @@ pipeline {
             steps {
                 git 'https://github.com/chuoi2cu/auto-deploy-server.git'
             }
-        }
+        },
+        stage('SSH server'){
+            sshagent (credentials: ['deploy-dev']) {
+                sh 'ssh -o StrictHostKeyChecking=no -l root 159.89.224.222 touch test.txt'
+            }
+       }
         
     }
 }
