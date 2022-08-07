@@ -8,7 +8,7 @@ pipeline {
         }
         stage('SSH server'){
             steps{
-                sshagent (['deploy-dev']) {
+                sshagent (['ssh-remote']) {
                     sh 'ssh -o StrictHostKeyChecking=no -l root 159.89.224.222 touch test.txt'
                 }
             }
