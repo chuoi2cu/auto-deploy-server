@@ -8,7 +8,7 @@ pipeline {
         }
         stage('SSH server'){
             steps{
-                sshagent(['ssh-key']) {
+                sshagent(['ssh-remote-root']) {
                     sh 'ssh -o StrictHostKeyChecking=no -l root 159.89.224.222 uname -a'
                 }
             }
