@@ -1,7 +1,9 @@
-pipeline{
-    agent any
+pipeline {
+    agent any 
+
     stages {
-        stage('Clone'){
+        
+        stage('Deploy') {
             steps {
                 git 'https://github.com/chuoi2cu/auto-deploy-server.git'
             }
