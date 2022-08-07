@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://<token>@github.com/username/repoName.git'
+                git branch: 'main'
             }
         },
         stage('Deploy') {
