@@ -1,17 +1,16 @@
 pipeline {
     agent any 
-
     stages {
-        stage ('Git Checkout') {
-            steps {
-                git branch: 'main', url: 'https://<token>@github.com/username/repoName.git'
-            }
-        },
         stage('Deploy') {
             steps {
                 git 'https://github.com/chuoi2cu/auto-deploy-server.git'
             }
-        }
+        },
+        stage('SSH server'){
+            sshagent (credentials: ['deploy-dev']) {
+                sh 'ssh -o StrictHostKeyChecking=no -l root 159.89.224.222 touch test.txt'
+            }
+       }
         
     }
 }
